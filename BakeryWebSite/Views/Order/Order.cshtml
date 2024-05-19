@@ -1,0 +1,11 @@
+﻿@model BakeryWebSite.Models.User
+@{
+    ViewData["Title"] = "Корзина";
+    Layout = "/Views/Shared/_Layout2.cshtml";
+}
+@section SignUpBtn{
+    <a style="text-decoration: none; font-size: 18px" asp-controller="Good" asp-action="Main">
+        @ViewBag.auth
+    </a>
+}
+<link rel="stylesheet" href="~/css/Basket.css" />

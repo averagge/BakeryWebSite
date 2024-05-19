@@ -1,0 +1,71 @@
+﻿.titlediv {
+    display: inline-block;
+    background-color: azure;
+    border-radius: 25px;
+    border: none;
+    margin: 10px;
+    width: 20%;
+}
+
+#goodsdiv {
+    padding: 15px;
+    width: 55%;
+}
+
+#categoriesdiv {
+    width: 15%;
+    height: fit-content;
+    min-height: 350px;
+}
+
+/*.image {
+    width: 100px;
+    max-height: 100%;
+}*/
+
+#addressdiv {
+    height: fit-content;
+    min-height: 350px;
+    padding: 10px;
+}
+
+.contentdiv {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.imgdiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    
+}
+.good_name{
+    background-color: black;
+}
+
+.categories{
+    margin: 10px;
+}
+
+.outdiv{
+    padding: 10px;
+    
+}
+
+.gooddiv:hover {
+    background-color:darkgray;
+}
+
+.gooddiv{
+    width: 250px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.img{
+    max-width: 100%;
+}

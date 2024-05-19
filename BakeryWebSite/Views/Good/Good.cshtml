@@ -1,0 +1,76 @@
+﻿@model BakeryWebSite.Models.GoodComponent
+@{
+    ViewData["Title"] = "Товар";
+    Layout = "/Views/Shared/_Layout2.cshtml";
+}
+@section SignUpBtn{
+    <a style="text-decoration: none; font-size: 18px" asp-controller="Good" asp-action="Main">
+        @ViewBag.auth
+    </a>
+}
+
+<link rel="stylesheet" href="~/css/Good.css" />
+<div style="display: flex; justify-content: center; width: 100%;">
+    <div class="maindiv">
+            <div style="display: inline-block; width: 50%;">
+                <div class="imgdiv">
+                    <img class="img" src="../../@Model.Good.Image" />
+                </div>
+            </div>
+            <div class="textdiv">
+                <h1 id="goodname">@Model.Good.Name</h1>
+                <p>
+                    <span>
+                        @Model.Good.Weight
+                    </span><span>г.</span></p>
+                <p>Состав:</p>
+                <ul>
+                    @foreach(Component c in Model.Components)
+                    {
+                        <li>@c.Name</li>
+                    }
+                </ul>
+            <p>
+                <span id="pricebut">
+                        @Model.Good.Price
+                    </span><span>руб.</span></p>
+            <button onclick="showQuantitySelector()" id="selectbtn" class="roundbut">
+                    Выбрать
+                </button>
+
+            <div id="quantitySelector" style="display: none;">
+                <input type="number" id="quantity" value="1" min="1" max="20" onkeydown="return false">
+
+
+
+                <button class="roundbut" onclick="addToCart()">Добавить в корзину</button>
+                <a asp-action="Basket" asp-controller="Order">Корзина</a>
+            </div>
+            </div>
+        <script>
+            function showQuantitySelector() {
+                document.getElementById('quantitySelector').style.display = 'block';
+                document.getElementById('selectbtn').style.display = 'none';
+            }
+            function addToCart() {
+                var quantity = document.getElementById('quantity').value;
+                var name = document.getElementById('goodname').textContent;
+                var price = document.getElementById('pricebut').textContent;
+                var selectedProduct = {
+                    name: name,
+                    price: parseInt(price), // Цена товара
+                    quantity: parseInt(quantity)
+                };
+
+                // Получаем текущий список товаров из Local Storage
+                var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Добавляем выбранный товар в корзину
+                cartItems.push(selectedProduct);
+
+                // Сохраняем обновленный список товаров в Local Storage
+                localStorage.setItem('cart', JSON.stringify(cartItems)); alert('Товар добавлен в корзину: ' + quantity + ' шт.');
+            }
+        </script>
+    </div>
+</div>

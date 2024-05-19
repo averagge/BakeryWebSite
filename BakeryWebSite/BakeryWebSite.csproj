@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\tovar\021.jpg" />
+    <Content Remove="wwwroot\tovar\3TIg_rAznyg.jpg" />
+    <Content Remove="wwwroot\tovar\tort-napoleon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Images\logo.png" />
+    <EmbeddedResource Include="wwwroot\tovar\021.jpg" />
+    <EmbeddedResource Include="wwwroot\tovar\3TIg_rAznyg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\tovar\tort-napoleon.jpg" />
+  </ItemGroup>
+
+</Project>

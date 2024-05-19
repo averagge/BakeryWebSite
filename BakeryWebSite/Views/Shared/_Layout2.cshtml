@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ПекарЪ</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BakeryWebSite.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="navmenu">
+            <div id="icondiv" class="titlediv">
+                
+                <a asp-area="" asp-controller="Good" asp-action="Main">
+                    <div class="logodiv">
+                    <img class="image" alt="Пекаръ" src="~/Images/logo.png" />
+                    </div>
+                    </a>
+
+@*                 <a asp-area="" asp-controller="Home" asp-action="Index">
+                </a> *@
+            </div>
+@*             <div id="maininputdiv" class="titlediv">
+                <img class="image" src="~/Images/search.png"/>
+                <input value="Искать" />
+            </div> *@
+            <div id="logindiv" class="titlediv">
+                    @RenderSection("SignUpBtn")
+                </div>
+        </div>
+    </header>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <footer class="bg-dark text-light text-center py-3">
+        &copy; 2024 Онлайн пекарня
+    </footer>
+</body>
+</html>

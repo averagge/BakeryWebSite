@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Авторизация";
+    Layout = "/Views/Shared/_Layout2.cshtml";
+}
+@section SignUpBtn{
+    <a style="text-decoration: none; font-size: 18px" asp-controller="Good" asp-action="Main">
+        @ViewBag.auth
+    </a>
+}
+<link rel="stylesheet" href="~/css/Login.css" />
+<div style="display: flex; justify-content: center; width: 100%;">
+    <div class="maindiv">
+        <form method="post" action="@Url.Action("Login", "User")">
+            <p style="text-align: center; font-size:30px" class="textp">Вход</p>
+            <p class="textp">Логин</p>
+            <input maxlength="20" id="name" required name="login" class="roundinput" />
+            <p class="textp">Пароль</p>
+            <input maxlength="20" required name="password" type="password" class="roundinput" />
+            <button class="roundbut">Войти</button>
+            <a style="font-size: 18px" class="textp" asp-action="SignUp" asp-controller="User">Зарегистрироваться</a>
+        </form>
+        <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var errorMessage = "";
+
+            if (name.trim() == "") {
+                errorMessage += "Введите ваше имя.<br>";
+            }
+
+            if (email.trim() == "") {
+                errorMessage += "Введите ваш email.<br>";
+            } else if (!isValidEmail(email)) {
+                errorMessage += "Введите корректный email.<br>";
+            }
+
+            if (password.trim() == "") {
+                errorMessage += "Введите ваш пароль.<br>";
+            } else if (password.length < 6) {
+                errorMessage += "Пароль должен содержать минимум 6 символов.<br>";
+            }
+
+            if (errorMessage !== "") {
+                document.getElementById("errorMessages").innerHTML = errorMessage;
+                return false;
+            }
+
+            return true;
+        }
+
+
+    </script>
+    </div>
+</div>

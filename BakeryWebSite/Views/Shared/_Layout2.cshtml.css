@@ -1,0 +1,124 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0077cc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+.navmenu {
+
+    background-color: #D7D2D2;
+    height: 80px;
+}
+
+.titlediv {
+    display: inline-block;
+    background-color: azure;
+    border-radius: 25px;
+    border: none;
+    margin: 10px;
+    width: 20%;
+}
+
+.logodiv {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-radius: 15px;
+    border-color: #FF702A;
+    border: 3px;
+    height: 80%;
+    width: 100%;
+    margin-top: 10px;
+}
+.imglink{
+    width: 100%;
+    height: 100%;
+}
+
+.image{
+    max-height: 100%;
+}
+
+/*#maininput{
+    width: 55%;
+}*/
+#icondiv {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-top: 0px;
+    width: 15%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    float: left;
+    height:100%;
+}
+
+#maininputdiv{
+    padding: 15px;
+    width: 55%;
+
+}
+
+#logindiv {
+    display: flex;
+    justify-content: center;
+    float: right;
+    height: 100%;
+    padding: 10px;
+}
+
+input{
+    border: none;
+    height:100%;
+    width: 90%;
+}
+
+main {
+    background-color: #D7D2D2;
+}
+

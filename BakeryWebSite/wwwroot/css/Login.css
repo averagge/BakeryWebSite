@@ -1,0 +1,28 @@
+﻿.maindiv {
+    width: 400px;
+    min-height: 500px;
+    background-color: #4EA429;
+    border-radius: 25px;
+    padding: 20px;
+    /*    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)*/
+}
+.roundinput {
+    border-radius: 20px;
+    width: 100%;
+}
+.textp {
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: left;
+    color: white;
+}
+.roundbut {
+    margin-top: 10px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    width: 100%;
+}

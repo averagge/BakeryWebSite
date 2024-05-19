@@ -1,0 +1,51 @@
+﻿@model BakeryWebSite.Models.CategoryGood
+@section SignUpBtn{
+    <a style="text-decoration: none; font-size: 18px" asp-controller="User" asp-action="Login">
+        @ViewBag.auth
+    </a>
+}
+
+<link rel="stylesheet" href="~/css/Main.css" />
+<div class="contentdiv">
+    <div id="categoriesdiv" class="titlediv">
+        <div  class="outdiv">
+        @foreach(Category cat in Model.Category)
+        {
+            <div class="categories">
+                    @Html.ActionLink(cat.Name, "CategoryGoods", "Good", new{id=cat.Id})
+@*                     <a asp-area="" asp-controller="Good" asp-action="Main" id="@cat.Id">
+                @cat.Name
+            </a> *@
+            </div>
+        }
+        </div>
+    </div>
+
+    <div id="goodsdiv" class="titlediv">
+        @foreach(var good in Model.Goods)
+        {
+            <div class="gooddiv">
+                <div class="imgdiv">
+                    <img class="img" src="@good.Image" alt="@good.Name" />
+                </div>
+                @Html.ActionLink(good.Name, "Good", "Good", new{id=good.Id}, new {@style="color: black; text-decoration: none; font-weight: bold;"})
+                <p class="good_weight">@good.Weight</p>
+                <p class="good_price">
+                    <span>
+                         @good.Price
+                    </span>
+                    <span>руб.</span>
+                </p>
+            </div>
+        }
+
+            
+        
+    </div>
+    <div id="addressdiv" class="titlediv">
+        <div class="outdiv">
+            <p><a href="@Url.Action("Basket", "Order")">Корзина</a></p>
+</div>
+
+    </div> 
+</div>

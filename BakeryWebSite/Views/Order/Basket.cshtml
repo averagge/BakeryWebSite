@@ -1,0 +1,93 @@
+﻿@model BakeryWebSite.Models.User
+@{
+    ViewData["Title"] = "Корзина";
+    Layout = "/Views/Shared/_Layout2.cshtml";
+}
+@section SignUpBtn{
+    <a style="text-decoration: none; font-size: 18px" asp-controller="Good" asp-action="Main">
+        @ViewBag.auth
+    </a>
+}
+<link rel="stylesheet" href="~/css/Basket.css" />
+<div class="maindiv">
+    <div class="textdiv">
+        <h2>Корзина:</h2>
+        <div id="cart-items"></div>
+        <button class="btn btn-danger" onclick="clearCart()" id="clear-cart-btn">Очистить корзину</button>
+    </div>
+
+    <div class="textdiv">
+        <h2>Оформление заказа</h2>
+        <div>
+            <p>Способ получения</p>
+            <select id="address-select">
+                <option>Курьером</option>
+                <option selected>В предприятии (ул. Большая Красная, 52)</option>
+            </select>
+            <p>
+                <input placeholder="адрес" required value="@Model.Address" id="address" style="display: none;" />
+            </p>
+            <p>Способ оплаты</p>
+            <select>
+                <option>Наличными</option>
+                <option>Картой</option>
+            </select>
+            <p><span>Итого к оплате:</span> <span id="TotalPrice"></span></p>
+            <button type="button" onclick="buttonClicked()">Оформить</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script>
+    // Функция для отображения товаров в корзине
+    function displayCart() {
+        // Получаем текущий список товаров в корзине из localStorage
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        // Получаем контейнер, в котором будут отображаться товары
+        let cartContainer = document.getElementById('cart-items');
+        // Очищаем контейнер перед отображением новых товаров
+        cartContainer.innerHTML = '';
+        // Переменная для хранения общей суммы
+        let totalPrice = 0;
+        // Перебираем каждый товар в корзине и добавляем его на страницу
+        cartItems.forEach(item => {
+            let itemHTML = `
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.name}</h5>
+                            <p class="card-text">Цена: ${item.price.toFixed(2)} руб.</p>
+                            <p class="card-text">Количество: ${item.quantity}</p>
+                        </div>
+                    </div>
+                `;
+            cartContainer.innerHTML += itemHTML;
+            // Увеличиваем общую сумму
+            totalPrice += item.price * item.quantity;
+        });
+        // Отображаем общую сумму на странице
+        document.getElementById('TotalPrice').innerText = ` ${totalPrice.toFixed(2)} руб.`;
+    }
+
+    // Функция для очистки корзины
+    function clearCart() {
+        localStorage.removeItem('cart');
+        // Перезагружаем страницу после очистки корзины
+        location.reload();
+    }
+
+    // Вызываем функцию отображения товаров в корзине при загрузке страницы
+    window.onload = function () {
+        displayCart();
+        // Добавляем обработчик события для кнопки очистки корзины
+        document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
+    };
+
+    // Функция для обработки нажатия кнопки "Оформить"
+    function buttonClicked() {
+        // Очищаем корзину
+        clearCart();
+        alert("Ваш заказ оформлен! Номер телефона для уточнения заказа: +7(937)575-13-92");       // Перенаправление на главную страницу
+        window.location.href = '@Url.Action("Main", "Good")';
+    }
+</script>

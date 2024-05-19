@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Регистрация";
+    Layout = "/Views/Shared/_Layout2.cshtml";
+}
+@section SignUpBtn{
+    <a style="text-decoration: none; font-size: 18px" asp-controller="Good" asp-action="Main">
+        @ViewBag.auth
+    </a>
+}
+<link rel="stylesheet" href="~/css/Login.css" />
+<div style="display: flex; justify-content: center; width: 100%;">
+    <div class="maindiv">
+        <form method="post" action="@Url.Action("SignUp", "User")">
+            <p style="text-align: center; font-size:30px" class="textp">Вход</p>
+            <p class="textp">Логин</p>
+            <input maxlength="20" required name="login" class="roundinput" />
+            <p class="textp">Пароль</p>
+            <input maxlength="20" id="password" required name="password" type="password" class="roundinput" />
+            <p class="textp">Имя</p>
+            <input maxlength="20" id="name" required name="name" class="roundinput" />
+            <p class="textp">Фамилия</p>
+            <input maxlength="20" required name="surname" class="roundinput" />
+            <p  class="textp">Адрес электронной почты</p>
+            <input maxlength="20" id="email" required name="email" class="roundinput" />
+            <p class="textp">Телефон</p>
+            <input maxlength="11" max="99999999999" required name="phone" class="roundinput" type="number" />
+            <button class="roundbut">Зарегистрироваться</button>
+            <a style="font-size: 18px" class="textp" asp-action="Login" asp-controller="User">Уже есть аккаунт</a>
+        </form>
+        <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var errorMessage = "";
+
+            if (name.trim() == "") {
+                errorMessage += "Введите ваше имя.<br>";
+            }
+
+            if (email.trim() == "") {
+                errorMessage += "Введите ваш email.<br>";
+            } else if (!isValidEmail(email)) {
+                errorMessage += "Введите корректный email.<br>";
+            }
+
+            if (password.trim() == "") {
+                errorMessage += "Введите ваш пароль.<br>";
+            } else if (password.length < 6) {
+                errorMessage += "Пароль должен содержать минимум 6 символов.<br>";
+            }
+
+            if (errorMessage !== "") {
+                document.getElementById("errorMessages").innerHTML = errorMessage;
+                return false;
+            }
+
+            return true;
+        }
+
+
+    </script>
+    </div>
+</div>
